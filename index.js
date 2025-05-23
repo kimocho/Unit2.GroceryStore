@@ -26,7 +26,9 @@ const inventory = [
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
-  // TODO: use `forEach`
+  items.forEach(currentItem => {
+    console.log(currentItem);
+  });
 }
 
 /**
@@ -34,7 +36,10 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
-  // TODO: use `map`
+  return items.map(currentItem => {
+    currentItem = currentItem.name.toUpperCase();
+    return currentItem;
+  });
 }
 
 /**
@@ -43,7 +48,9 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
-  // TODO: use `find`
+  return items.find(currentItem => {
+    return currentItem.id === id;
+  });
 }
 
 /**
@@ -52,7 +59,10 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name` if found
  */
 function getItemPriceByName(items, name) {
-  // TODO: use a loop!
+  for (let i = 0; i < items.length; i++) {
+    let currentItem = items[i];
+    if (currentItem.name === name) return currentItem.price;
+  }
 }
 
 /**
@@ -61,7 +71,9 @@ function getItemPriceByName(items, name) {
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
-  // TODO: use `filter`
+  return items.filter(currentItem => {
+    return currentItem.category === category;
+  })
 }
 
 /**
@@ -69,7 +81,9 @@ function getItemsByCategory(items, category) {
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
-  // TODO: use `reduce`
+  return items.reduce((totalQty, currentItem) => {
+    return totalQty + currentItem.quantity;
+  }, 0);
 }
 
 /**
@@ -77,7 +91,9 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function getTotalPrice(items) {
-  // TODO: use `reduce`
+  return items.reduce((totalCost, currentItem) => {
+    return totalCost + currentItem.price * currentItem.quantity;
+  }, 0);
 }
 
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
